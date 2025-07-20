@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Protected Message</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f2f2f2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    #container {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      text-align: center;
+      width: 300px;
+    }
+    input[type="password"] {
+      width: 80%;
+      padding: 10px;
+      margin: 10px 0;
+    }
+    button {
+      padding: 10px 20px;
+      cursor: pointer;
+    }
+    #message {
+      margin-top: 20px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <h2>Hey.. Enter the password!</h2>
+    <input type="password" id="passcode" placeholder="Enter passcode">
+    <button onclick="checkPasscode()">click!!</button>
+    <div id="message">
+      <h3>Secret Message:</h3>
+      <p>This is your private message only visible with the correct password.</p>
+    </div>
+    <p id="error" style="color:red;"></p>
+  </div>
+
+  <script>
+    const correctPasscode = "letmein"; // Change this to your desired passcode
+
+    function checkPasscode() {
+      const input = document.getElementById("passcode").value;
+      const message = document.getElementById("message");
+      const error = document.getElementById("error");
+
+      if (input === correctPasscode) {
+        message.style.display = "block";
+        error.textContent = "";
+      } else {
+        message.style.display = "none";
+        error.textContent = "Incorrect passcode.";
+      }
+    }
+  </script>
+</body>
+</html>
